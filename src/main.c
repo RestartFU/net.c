@@ -10,7 +10,7 @@ int main() {
     addr.port = 1337;
 
     SOCKET sock;
-    if (!tcp_connect(proto_tcp, addr, &sock)) {
+    if (!tcp_connect(addr, &sock)) {
         printf("no success\n");
         exit(-1);
     }
