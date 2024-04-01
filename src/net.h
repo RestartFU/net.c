@@ -6,6 +6,10 @@
 
 int initialize_wsa();
 
+typedef struct TCPConn {
+    SOCKET sock;
+} TCPConn;
+
 typedef struct Addr {
     char *addr;
     int port;
@@ -16,6 +20,7 @@ typedef enum Protocol {
     proto_udp,
 } Protocol;
 
-boolean tcp_connect(Addr addr, SOCKET *sock);
-boolean socket_write(SOCKET sock, char *buf);
-boolean socket_read(SOCKET sock, char **res, int len);
+boolean tcp_connect(Addr addr, TCPConn *conn);
+boolean tcp_write(TCPConn *conn, char *buf);
+boolean tcp_read(TCPConn *conn, char **res, int len);
+void tcp_close(TCPConn *conn);

@@ -9,12 +9,14 @@ int main() {
     addr.addr = "127.0.0.1";
     addr.port = 1337;
 
-    SOCKET sock;
-    if (!tcp_connect(addr, &sock)) {
+    TCPConn *conn = malloc(sizeof(conn));
+    if (!tcp_connect(addr, conn)) {
         printf("no success\n");
         exit(-1);
     }
 
     printf("success\n");
-    socket_write(sock, "test");
+    tcp_write(conn, "test");
+    tcp_close(conn);
+    printf("connection closed successfully");
 }
