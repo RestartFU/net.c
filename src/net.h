@@ -11,6 +11,11 @@ typedef struct Addr {
     int port;
 } Addr;
 
-boolean tcp_connect(Addr addr, SOCKET *sock);
+typedef enum Protocol {
+    proto_tcp,
+    proto_udp,
+} Protocol;
+
+boolean tcp_connect(Protocol proto, Addr addr, SOCKET *sock);
 boolean socket_write(SOCKET sock, char *buf);
 boolean socket_read(SOCKET sock, char **res, int len);

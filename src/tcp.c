@@ -1,7 +1,7 @@
 #include "net.h"
 
-boolean tcp_connect(Addr addr, SOCKET *sock) {
-    *sock = socket(AF_INET, SOCK_STREAM, 0);
+boolean tcp_connect(Protocol proto, Addr addr, SOCKET *sock) {
+    *sock = socket(AF_INET, SOCK_STREAM, proto);
 
     if (*sock == INVALID_SOCKET) {
         return 0;
